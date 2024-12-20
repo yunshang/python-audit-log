@@ -80,11 +80,3 @@ headers = {
 principal = get_principal_from_headers(headers)
 print(principal)
 ```
-
-## 贡献
-
-欢迎任何形式的贡献！请提交问题或拉取请求。
-
-## 许可证
-
-该项目使用 MIT 许可证。有关详细信息，请参阅 LICENSE 文件。
