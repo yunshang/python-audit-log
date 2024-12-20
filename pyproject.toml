@@ -1,32 +1,31 @@
-[project]
-name = "iceye-audit-log"
+[tool.poetry]
+name = "python-audit-log"
+version = "0.1.0"
 description = "Audit logging library for Python"
-dynamic = ["version"]
-requires-python = ">=3.11"
+authors = ["lizhongyi <lizhongyi@xyz10.com>"]
 readme = "README.md"
-dependencies = []
-license = { file = "LICENSE" }
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3",
-    "Topic :: System :: Logging",
-]
 
-[project.urls]
+# Project URLs for better metadata in the package
+[tool.poetry.urls]
 repository = "https://github.com/iceye-ltd/python-audit-log"
 
+[tool.poetry.dependencies]
+python = ">=3.12"
+SQLAlchemy = ">=1.4"
+Alembic = ">=1.7"
+pymysql = "^1.1.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+
 [build-system]
-requires = ["setuptools>=60", "setuptools-scm>=8.0"]
+requires = ["poetry-core>=1.2.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.setuptools_scm]
-# can be empty if no extra settings are needed, presence enables setuptools_scm
+# Enables setuptools_scm, no additional configuration needed
 
-[tool.ruff.lint]
+[tool.ruff]
 select = [
     "A",     # builtins
     "ASYNC", # Helps avoid blocking calls in async code
@@ -64,12 +63,12 @@ unfixable = [
     "ERA", # Manual removal of those blocks to avoid false positives getting deleted
 ]
 
-[tool.ruff.lint.flake8-builtins]
+[tool.ruff.flake8-builtins]
 builtins-ignorelist = ["hash", "help", "id", "list", "type"]
 
-[tool.ruff.lint.per-file-ignores]
+[tool.ruff.per-file-ignores]
 "**/tests/**.py" = ["S"]
 
-[tool.ruff.lint.flake8-pytest-style]
+[tool.ruff.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false

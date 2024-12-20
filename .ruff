@@ -1,0 +1,61 @@
+# 忽略特定的规则代码
+ignore = ["E501", "W503", "E203", "E402"]
+
+# 指定目标 Python 版本
+target-version = "py38"
+
+# 指定额外的规则集
+extend-select = ["B", "C"]
+
+# 允许使用某些规则作为实验性功能
+extend-experimental = ["RUF"]
+
+# 配置 isort 的行为
+[isort]
+known_first_party = ["mymodule", "mypackage"]
+default_section = "THIRDPARTY"
+forced_separate = "test"
+indent = "    "
+line_length = 100
+lines_between_types = 0
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+# 配置 Black 的行为
+[black]
+line-length = 100
+target-version = "py38"
+
+# 配置 MyPy 的行为
+[mypy]
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+pretty = true
+
+
+# 配置 Ruff 的代码检查路径和排除
+[files]
+exclude = [".venv", "node_modules", "build", "dist", "*.pyc", "__pycache__"]
+include = ["*.py"]
+
+# 配置规则的参数
+[rules.custom_rules]
+max_length = 30
+
+[tool.ruff]
+unnecessary-imports = true
+
+# 检查函数是否太长
+too-many-lines = 300
+
+# 检查循环是否太长
+too-many-branches = 12
+
+# 检查是否使用了不允许的拼写
+spelling-ignore-words = ["Ruff"]
